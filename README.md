@@ -1,2 +1,2 @@
 # yoan-milani-portfolio
-Carte de visite &amp; Profile professionnel CV
+Carte de visite &amp; Profil professionnel CV
