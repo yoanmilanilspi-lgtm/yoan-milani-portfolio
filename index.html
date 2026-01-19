@@ -212,6 +212,84 @@
             .card { box-shadow: none; border-radius: 0; border: 1px solid #ccc; animation: none; padding: 20px; }
             * { animation: none !important; }
         }
+		
+		/* ✅ BOUTONS SURBRILLANCE JAUNE */
+		.contact-btn {
+			display: inline-flex; align-items: center; gap: 4px;
+			padding: 2px 10px; border-radius: 3px; 
+			font-weight: 150; font-size: 0.8rem; text-decoration: none;
+			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 0.2);
+			border: 2px solid var(--secondary);
+			box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+		}
+
+		.gmail-btn {
+			/* ✅ FOND BLEU classique */
+			background: linear-gradient(135deg, var(--accent), var(--bg2)) !important;
+			color: white !important;
+			
+			/* ✅ BORDURE dégradé GMAIL 4 couleurs */
+			border: 3px solid transparent;
+			background-image: 
+				linear-gradient(var(--accent), var(--bg2)), 
+				linear-gradient(135deg, #4285F4, #34A853, #FBBC05, #EA4335);
+			background-origin: border-box;
+			background-clip: content-box, border-box;
+			
+			position: relative;
+			padding: 12px 24px;
+			border-radius: 28px;
+		}
+
+		.gmail-btn::before {
+			content: '';
+			position: absolute;
+			top: -3px; left: -3px; right: -3px; bottom: -3px;
+			background: conic-gradient(
+				#4285F4 0deg,
+				#34A853 90deg, 
+				#FBBC05 180deg,
+				#EA4335 270deg,
+				#4285F4 360deg
+			);
+			border-radius: 31px;
+			z-index: -1;
+			opacity: 0;
+			transition: all 0.4s ease;
+		}
+
+		.gmail-btn:hover {
+			/* ✅ SURBRILLANCE JAUNE MAGIQUE */
+			background: var(--secondary) !important;
+			transform: translateY(-4px) scale(1.06);
+			box-shadow: 0 12px 35px rgba(245, 158, 11, 0.6);
+			border-color: var(--secondary);
+		}
+
+		.gmail-btn:hover::before {
+			opacity: 1;
+			animation: spinBorder 2s linear infinite;
+		}
+
+		@keyframes spinBorder {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+
+
+
+		.linkedin-btn {
+			background: linear-gradient(135deg, #0077b5, #0098e0);
+			color: white !important;
+			border-color: #0077b5;
+		}
+
+		.contact-btn:hover {
+			transform: translateY(-3px) scale(1.05);
+			box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+			background: var(--secondary) !important;
+			color: white !important;
+		}
     </style>
 </head>
     <body>
@@ -228,7 +306,7 @@
                     <div>
                         <h1>Yoan MILANI-AMADI</h1>
                         <h2>Ingénieur en efficacité énergétique durable</h2>
-                        <div class="subtitle">Énergies renouvelables • Électricité/Recherche/Développement</div>
+                        <div class="subtitle">Énergies renouvelables • Électricité/Recherche/Développement durable</div>
                         <div class="badge">Transition énergétique & énergies renouvelables</div>
                         
                         <a href="https://drive.google.com/uc?export=download&id=1d4UQVTngMRohn90zosQpsY7F5qV5U85s" 
@@ -374,7 +452,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="cv-footer">CV de Monsieur Yoan MILANI-AMADI - La Réunion</div>
+            <div class="cv-footer">Yoan MILANI-AMADI - Sainte-Suzanne, La Réunion | yoan.milani.lspi@gmail.com | 06 93 02 78 40</div>
         </div>
     </div>
 
@@ -404,11 +482,38 @@
 
 					<p>Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.</p>
 					
-                    <p style="margin-top: 40px; text-align: right; font-weight: 600; font-size: 1rem;">
-                        <strong>Respectueusement,</strong><br><br>Yoan MILANI-AMADI
-                    </p>
-                </div>             
-            </div>
+                    <!-- REMPLACER la signature actuelle (ligne ~320) -->
+					<footer style="margin-top: 40px; padding: 30px 0; text-align: center; font-size: 14px; color: #555; border-top: 2px solid #e1e7ef; background: rgba(255,255,255,0.9); border-radius: 12px; margin: 20px -28px 0 -28px;">
+						<div style="max-width: 450px; margin: 0 auto;">
+							<strong style="font-size: 20px; color: var(--bg1); display: block; margin-bottom: 12px; font-weight: 700; letter-spacing: 0.5px;">
+								Yoan MILANI-AMADI
+							</strong>
+							<div style="color: #777; font-weight: 500; font-size: 15px; margin-bottom: 8px;">
+								Ingénieur Énergie - Développement Durable
+							</div>
+							<div style="color: #888; margin-bottom: 12px; font-size: 13px;">
+								Sainte-Suzanne, La Réunion | 06 93 02 78 40
+							</div>
+							<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+								<a href="mailto:yoan.milani.lspi@gmail.com" 
+								   target="_blank" 
+								   class="contact-btn gmail-btn"
+								   style="color: var(--accent); transition: all 0.3s ease;">
+								   ✉️ Gmail
+								</a>
+
+
+								<a href="https://linkedin.com/in/yoan-milani" target="_blank" class="contact-btn linkedin-btn"  title="Profil LinkedIn">
+								<svg viewBox="0 0 16 16" fill="none">
+									<path d="M17.9444 0H2.05556C0.921875 0 0 0.921875 0 2.05556V17.9444C0 19.0789 0.921875 20 2.05556 20H17.9444C19.0789 20 20 19.0789 20 17.9444V2.05556C20 0.921875 19.0789 0 17.9444 0ZM6.11111 15.5556H3.33333V7.22222H6.11111V15.5556ZM4.72222 6.11111C5.61979 6.11111 6.38889 5.34201 6.38889 4.44444C6.38889 3.54688 5.61979 2.77778 4.72222 2.77778C3.82465 2.77778 3.05556 3.54688 3.05556 4.44444C3.05556 5.34201 3.82465 6.11111 4.72222 6.11111ZM14.4444 15.5556H11.6667V11.6667C11.6667 10.8125 11.6528 9.6875 10.5556 9.6875C9.375 9.6875 9.16667 10.625 9.16667 11.5278V15.5556H6.38889V7.22222H9.02778V8.47222H9.08333C9.375 8.125 9.92188 7.6875 10.8333 7.6875C13.3333 7.6875 14.4444 9.375 14.4444 12.3611V15.5556Z" fill="currentColor"/>
+								</svg>
+								Yoan Milani
+								</a>
+							</div>
+						</div>
+					</footer>
+
+				</div>
         </div>
     </div>
 
