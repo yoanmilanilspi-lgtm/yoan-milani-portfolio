@@ -60,7 +60,7 @@
             to { opacity: 1; transform: translateX(0); }
         }
         h2 { margin: 0; font-size: 1.1rem; font-weight: 600; color: var(--accent); text-transform: uppercase; }
-        .subtitle { color: var(--muted); margin: 3px 0 5px; font-size: .95rem; }
+        .subtitle { color: #000000; margin: 3px 0 5px; font-size: .95rem; }
         .contact { 
             display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: .95rem; color: var(--muted); margin-top: 4px;
             animation: fadeInUp 0.6s ease-out 1s both;
@@ -70,7 +70,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .subtitle { color: var(--muted); margin: 4px 0 6px; font-size: 0.9rem; font-weight: 400; letter-spacing: -0.01em; }
+        .subtitle { color: #000000; margin: 4px 0 6px; font-size: 0.9rem; font-weight: 400; letter-spacing: -0.01em; }
         p { margin: 4px 0 6px; font-size: 0.9rem; line-height: 1.65; font-weight: 400; }
         
         .header { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px; }
@@ -90,7 +90,7 @@
         
         .contact { 
             display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.9rem; 
-            color: var(--muted); margin-top: 8px; animation: fadeInUp 0.6s ease-out 1s both;
+            color: #000000; margin-top: 8px; animation: fadeInUp 0.6s ease-out 1s both;
             opacity: 0; transform: translateY(15px); font-weight: 400;
         }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
@@ -124,6 +124,20 @@
 			box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4); 
 			color: white !important;
 		}
+		/* ✅ BOUTON COMPACT À CÔTÉ DU BADGE */
+		.cv-download-btn[style*="margin: 0"] {
+			white-space: nowrap !important;
+			flex-shrink: 0;
+			animation-delay: 0.9s !important;
+		}
+
+		@media (max-width: 480px) {
+			.badge, .cv-download-btn[style*="margin: 0"] {
+				font-size: 0.75rem !important;
+				padding: 4px 8px !important;
+			}
+		}
+
 		/* 🔽 COLLAPSE/EXPAND FLÈCHES */
 		.toggle-btn {
 			position: absolute; top: 12px; right: 20px; 
@@ -306,12 +320,56 @@
                     <div>
                         <h1>Yoan MILANI-AMADI</h1>
                         <h2>Ingénieur en efficacité énergétique durable</h2>
-                        <div class="subtitle">Énergies renouvelables • Électricité/Recherche/Développement durable</div>
-                        <div class="badge">Transition énergétique & énergies renouvelables</div>
-                        
-                        <a href="https://drive.google.com/uc?export=download&id=1d4UQVTngMRohn90zosQpsY7F5qV5U85s" 
-                           download="CV_Yoan_Milani_Amadi.pdf" class="cv-download-btn" target="_blank">
-                           📄 Télécharger CV
+                        <div class="subtitle">Énergies renouvelables • Électricité/Recherche/Développement durable</div> 
+						
+						<div style="display: flex; align-items: center; gap: 12px; margin-top: 8px;">
+							<div class="badge">Transition énergétique & énergies renouvelables</div>
+							<a href="https://drive.google.com/uc?export=download&id=1d4UQVTngMRohn90zosQpsY7F5qV5U85s" 
+									
+							   download="CV_Yoan_Milani_Amadi.pdf" 
+							   class="cv-download-btn" 
+							   style="font-size: 0.85rem; padding: 8px 16px; margin: 0;" 
+							   onclick="confirmDownload(event)">📄 Télécharger CV</a>
+							<div id="cvUpdateDate" style="font-size: 0.8rem; color: var(--muted); opacity: 0;"></div>
+						</div>
+
+					<script>
+					function confirmDownload(event) {
+					const box = document.getElementById('cvUpdateDate');
+					
+					// ✅ MESSAGE TEMPORAIRE "Téléchargement en cours..."
+					box.innerHTML = '<span style="color: #0077b6;">⏳ Téléchargement lancé...</span>';
+					box.style.opacity = 1;
+					
+					const now = new Date();
+					
+					// Fuseau Réunion GMT+4
+					const dateFormatted = now.toLocaleDateString('fr-FR', {
+						day: '2-digit', month: '2-digit', year: 'numeric',
+						timeZone: 'Indian/Reunion'
+					});
+					
+					const timeFormatted = now.toLocaleTimeString('fr-FR', {
+						hour: '2-digit', minute: '2-digit', second: '2-digit',
+						timeZone: 'Indian/Reunion'
+					});
+					
+					// ✅ DÉLAI  message "réussi"
+					setTimeout(() => {
+						const message = `<span style="color: #2e7d32; font-weight: 600;">✔ Téléchargement du CV réussi</span><br>
+										 <small style="color: #000000; font-weight: 600;"> — Mis à jour le ${dateFormatted} à ${timeFormatted} (GMT+4) Heure de La Réunion</small>`;
+						box.innerHTML = message;
+					}, 4000); // 7 secondes = 7000ms
+					
+					// ✅ Auto-efface après 12s total (7s + 5s affichage)
+					setTimeout(() => {
+						box.style.opacity = 0;
+						setTimeout(() => box.innerHTML = '', 600);
+					}, 60000);
+					}
+					
+					</script>
+
                         </a>
                         
                         <div class="contact">
