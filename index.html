@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yoan MILANI-AMADI - CV & Carte de Visite</title>
+	<link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <!-- Polices système ultra-lisibles -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -103,38 +107,56 @@
         }
         .badge:hover { background: var(--secondary); color: #fff; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); }
 		.cv-download-btn {
-			display: inline-block; 
+			display: inline-flex; /* Changé pour mieux aligner l'icône et le texte */
+			align-items: center;
+			gap: 8px;
 			margin-top: 12px; 
-			padding: 10px 20px; 
-			background: linear-gradient(135deg, var(--accent), var(--bg2)); 
+			padding: 8px 16px; /* Légèrement élargi pour un look plus "Pro" */
+			background: #0077B5;
 			color: white !important; 
 			text-decoration: none; 
 			border-radius: 25px; 
-			font-weight: 500; 
-			font-size: 0.9rem; 
+			font-weight: 600; /* Un peu plus épais pour la lisibilité */
+			font-size: 0.75rem; 
 			letter-spacing: 0.02em;
 			box-shadow: 0 4px 15px rgba(0, 119, 182, 0.3);
 			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			
+			/* Animation d'entrée */
 			animation: fadeInUp 0.6s ease-out 1.1s both;
-			opacity: 0; transform: translateY(15px);
 		}
+
 		.cv-download-btn:hover { 
-			background: var(--secondary); 
-			transform: translateY(-3px) scale(1.02); 
-			box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4); 
+			background: #F59E0B; /* Équivalent de var(--secondary) pour le scintillement jaune */
+			transform: translateY(-3px) scale(1.05); 
+			box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5); 
 			color: white !important;
 		}
-		/* ✅ BOUTON COMPACT À CÔTÉ DU BADGE */
+
+		/* ✅ BOUTON COMPACT (Gestion du badge) */
 		.cv-download-btn[style*="margin: 0"] {
 			white-space: nowrap !important;
 			flex-shrink: 0;
 			animation-delay: 0.9s !important;
 		}
 
+		/* ✅ OPTIMISATION MOBILE */
 		@media (max-width: 480px) {
-			.badge, .cv-download-btn[style*="margin: 0"] {
-				font-size: 0.75rem !important;
-				padding: 4px 8px !important;
+			.cv-download-btn {
+				font-size: 0.7rem !important;
+				padding: 6px 12px !important;
+			}
+		}
+
+		/* Animation nécessaire si non définie ailleurs */
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(15px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
 			}
 		}
 
@@ -238,46 +260,67 @@
 		}
 
 		.gmail-btn {
-			/* ✅ FOND BLEU classique */
-			background: linear-gradient(135deg, var(--accent), var(--bg2)) !important;
-			color: white !important;
-			
-			/* ✅ BORDURE dégradé GMAIL 4 couleurs */
-			border: 3px solid transparent;
-			background-image: 
-				linear-gradient(var(--accent), var(--bg2)), 
-				linear-gradient(135deg, #4285F4, #34A853, #FBBC05, #EA4335);
-			background-origin: border-box;
-			background-clip: content-box, border-box;
-			
 			position: relative;
 			padding: 12px 24px;
 			border-radius: 28px;
+			border: none;
+			/* ✅ FOND BLEU TRANSLUCIDE (avec 70% d'opacité) */
+			background: rgba(0, 35, 149, 0.3); 
+			/* ✅ EFFET FLOU d'ARRIÈRE-PLAN (le cœur du Glassmorphism) */
+			backdrop-filter: blur(8px);
+			-webkit-backdrop-filter: blur(8px); /* Pour la compatibilité Safari */
+			
+			color: white !important;
+			cursor: pointer;
+			font-family: 'Segoe UI', sans-serif;
+			font-size: 0.75rem;
+			font-weight: 600;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			transition: all 0.3s ease;
+			z-index: 1;
+			overflow: hidden;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère de base */
 		}
 
+		/* La couche de fond interne pour cacher le centre du gradient */
+		.gmail-btn::after {
+			content: '';
+			position: absolute;
+			inset: 3px; /* Épaisseur de la bordure */
+			/* ✅ FOND INTERNE TRANSLUCIDE (pour voir le serpent tourner derrière) */
+			background: rgba(0, 35, 149, 0.85); 
+			border-radius: 25px;
+			z-index: -1;
+			transition: all 0.3s ease;
+		}
+
+		/* Le "Serpent" Arc-en-ciel (Caché par défaut) */
 		.gmail-btn::before {
 			content: '';
 			position: absolute;
-			top: -3px; left: -3px; right: -3px; bottom: -3px;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%) rotate(0deg);
+			width: 200%;
+			height: 400%; 
 			background: conic-gradient(
-				#4285F4 0deg,
-				#34A853 90deg, 
-				#FBBC05 180deg,
-				#EA4335 270deg,
-				#4285F4 360deg
+				#4285F4, 
+				#34A853, 
+				#FBBC05, 
+				#EA4335, 
+				#4285F4
 			);
-			border-radius: 31px;
-			z-index: -1;
+			z-index: -2;
 			opacity: 0;
-			transition: all 0.4s ease;
+			transition: opacity 0.4s ease;
 		}
 
+		/* ÉTAT AU SURVOL */
 		.gmail-btn:hover {
-			/* ✅ SURBRILLANCE JAUNE MAGIQUE */
-			background: var(--secondary) !important;
 			transform: translateY(-4px) scale(1.06);
-			box-shadow: 0 12px 35px rgba(245, 158, 11, 0.6);
-			border-color: var(--secondary);
+			box-shadow: 0 12px 35px rgba(66, 133, 244, 0.3); /* Ombre portée plus diffuse */
 		}
 
 		.gmail-btn:hover::before {
@@ -285,17 +328,88 @@
 			animation: spinBorder 2s linear infinite;
 		}
 
-		@keyframes spinBorder {
-			0% { transform: rotate(0deg); }
-			100% { transform: rotate(360deg); }
+		/* Changement de couleur interne au survol */
+		.gmail-btn:hover::after {
+			background: rgba(0, 27, 117, 0.9); 
 		}
 
-
-
+		@keyframes spinBorder {
+			from { transform: translate(-50%, -50%) rotate(0deg); }
+			to { transform: translate(-50%, -50%) rotate(360deg); }
+		}
+        
 		.linkedin-btn {
-			background: linear-gradient(135deg, #0077b5, #0098e0);
+			position: relative;
+			/* ✅ Format compact ajusté */
+			padding: 10px 20px; 
+			border-radius: 25px;
+			border: none;
+			background: #0077b5; /* Fond LinkedIn stable */
 			color: white !important;
-			border-color: #0077b5;
+			cursor: pointer;
+			font-family: 'Segoe UI', sans-serif;
+			font-size: 0.75rem;
+			font-weight: 600;
+			display: inline-flex; /* Assure que le bouton ne prend que la largeur nécessaire */
+			align-items: center;
+			gap: 8px;
+			transition: all 0.3s ease;
+			z-index: 1;
+			overflow: hidden; 
+			text-decoration: none;
+		}
+
+		/* Le Masque Interne (Réduit pour s'adapter au 10px 20px) */
+		.linkedin-btn::after {
+			content: '';
+			position: absolute;
+			inset: 2px; /* Épaisseur de bordure légèrement affinée pour le petit format */
+			background: #0077b5; 
+			border-radius: 23px;
+			z-index: -1;
+			transition: all 0.3s ease;
+		}
+
+		/* Le "Serpent" Bleu LinkedIn */
+		.linkedin-btn::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%) rotate(0deg);
+			width: 250%; /* Augmenté pour garantir la couverture sur format rectangulaire */
+			height: 500%; 
+			background: conic-gradient(
+				#0077b5, 
+				#00a0dc, 
+				#ffffff, 
+				#004b7c, 
+				#0077b5
+			);
+			z-index: -2;
+			opacity: 0;
+			transition: opacity 0.4s ease;
+		}
+
+		.linkedin-btn:hover {
+			transform: translateY(-2px) scale(1.03); /* Animation plus subtile pour un petit bouton */
+			box-shadow: 0 6px 15px rgba(0, 119, 181, 0.4);
+		}
+
+		.linkedin-btn:hover::before {
+			opacity: 1;
+			animation: spinSnake 1.5s linear infinite;
+		}
+
+		/* Ajustement de la taille de l'icône si nécessaire */
+		.linkedin-btn svg {
+			width: 14px;
+			height: 14px;
+		}
+
+		@keyframes spinSnake {
+			from { transform: translate(-50%, -50%) rotate(0deg); }
+			to { transform: translate(-50%, -50%) rotate(360deg); }
 		}
 
 		.contact-btn:hover {
@@ -303,6 +417,61 @@
 			box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
 			background: var(--secondary) !important;
 			color: white !important;
+		}
+		.titre-signature {
+			font-size: 0.75rem;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			color: #002395; /* Bleu Roi par défaut */
+			font-weight: 700;
+			margin-top: 15px;
+			transition: color 0.4s ease, transform 0.3s ease;
+			display: inline-block; /* Nécessaire pour l'effet de léger mouvement */
+			cursor: default;
+		}
+
+		.titre-signature:hover {
+			color: #ff4d00; /* Passage au Rouge Magma */
+			transform: translateY(-2px); /* Petit bond vers le haut */
+		}
+		
+		/* Style du badge compteur de visites */
+		.visitor-counter {
+			margin-top: 25px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-family: 'Inter', sans-serif;
+		}
+
+		#stats-badge {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			padding: 6px 14px;
+			background: rgba(255, 255, 255, 0.05); /* Très léger */
+			border: 1px solid var(--border);
+			border-radius: 20px;
+			font-size: 0.8rem;
+			color: var(--primary);
+			font-weight: 500;
+		}
+
+		/* Le point lumineux */
+		.status-dot {
+			height: 8px;
+			width: 8px;
+			background-color: #10b981; /* Vert émeraude */
+			border-radius: 50%;
+			display: inline-block;
+			box-shadow: 0 0 8px #10b981;
+			animation: pulse-green 2s infinite;
+		}
+
+		@keyframes pulse-green {
+			0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+			70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+			100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 		}
     </style>
 </head>
@@ -323,7 +492,8 @@
                         <div class="subtitle">Énergies renouvelables • Électricité/Recherche/Développement durable</div> 
 						
 						<div style="display: flex; align-items: center; gap: 12px; margin-top: 8px;">
-							<div class="badge">Transition énergétique & énergies renouvelables</div>
+							<div class="badge" button onclick="navigator.share({title: 'Portfolio - Yoan Milani', url: 'https://energix-97441.duckdns.org'})"
+								 >Transition énergétique & énergies renouvelables</div>
 							<a href="assets/CV_Yoan_Milani_Amadi.pdf" 
 									
 							   download="CV_Yoan_Milani_Amadi.pdf" 
@@ -519,7 +689,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="cv-footer">Yoan MILANI-AMADI - Sainte-Suzanne, La Réunion | yoan.milani.lspi@gmail.com | 06 93 02 78 40</div>
+            <div class="cv-footer" style="color: #000000; ">Yoan MILANI-AMADI - Sainte-Suzanne, La Réunion | yoan.milani.lspi@gmail.com | 06 93 02 78 40</div>
         </div>
     </div>
 
@@ -555,13 +725,17 @@
                     <!-- REMPLACER la signature actuelle (ligne ~320) -->
 					<footer style="margin-top: 40px; padding: 30px 0; text-align: center; font-size: 14px; color: #555; border-top: 2px solid #e1e7ef; background: rgba(255,255,255,0.9); border-radius: 12px; margin: 20px -28px 0 -28px;">
 						<div style="max-width: 450px; margin: 0 auto;">
-							<strong style="font-size: 20px; color: var(--bg1); display: block; margin-bottom: 12px; font-weight: 700; letter-spacing: 0.5px;">
+							<strong style="font-size: 20px; color: var(--bg1); display: block; margin-bottom: 5px; font-weight: 700; letter-spacing: 0.5px;">
 								Yoan MILANI-AMADI
 							</strong>
-							<div style="color: #777; font-weight: 500; font-size: 15px; margin-bottom: 8px;">
-								Ingénieur Énergie - Développement Durable
+							<div style="color: #002395; font-weight: 500; font-size: 15px; margin-bottom: 5px;">
+								Ingénieur en génie énergétique
+								<p style=" text-align: center; font-size: 0.75rem; color: #002395; max-width: 500px; margin: 0 auto; line-height: 1.6; opacity: 0.8;">
+									Spécialisé dans la transition énergétique EnR des territoires insulaires 
+									<br>
+								</p>
 							</div>
-							<div style="color: #888; margin-bottom: 12px; font-size: 13px;">
+							<div style="color: #000000; margin-bottom: 12px; font-size: 13px;">
 								Sainte-Suzanne, La Réunion | 06 93 02 78 40
 							</div>
 							<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
@@ -573,11 +747,11 @@
 								</a>
 
 
-								<a href="https://linkedin.com/in/yoan-milani" target="_blank" class="contact-btn linkedin-btn"  title="Profil LinkedIn">
-								<svg viewBox="0 0 16 16" fill="none">
-									<path d="M17.9444 0H2.05556C0.921875 0 0 0.921875 0 2.05556V17.9444C0 19.0789 0.921875 20 2.05556 20H17.9444C19.0789 20 20 19.0789 20 17.9444V2.05556C20 0.921875 19.0789 0 17.9444 0ZM6.11111 15.5556H3.33333V7.22222H6.11111V15.5556ZM4.72222 6.11111C5.61979 6.11111 6.38889 5.34201 6.38889 4.44444C6.38889 3.54688 5.61979 2.77778 4.72222 2.77778C3.82465 2.77778 3.05556 3.54688 3.05556 4.44444C3.05556 5.34201 3.82465 6.11111 4.72222 6.11111ZM14.4444 15.5556H11.6667V11.6667C11.6667 10.8125 11.6528 9.6875 10.5556 9.6875C9.375 9.6875 9.16667 10.625 9.16667 11.5278V15.5556H6.38889V7.22222H9.02778V8.47222H9.08333C9.375 8.125 9.92188 7.6875 10.8333 7.6875C13.3333 7.6875 14.4444 9.375 14.4444 12.3611V15.5556Z" fill="currentColor"/>
-								</svg>
-								Yoan Milani
+								<a href="https://linkedin.com/in/yoan-milani" target="_blank" class="contact-btn linkedin-btn" title="Profil LinkedIn">
+									<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M17.9444 0H2.05556C0.921875 0 0 0.921875 0 2.05556V17.9444C0 19.0789 0.921875 20 2.05556 20H17.9444C19.0789 20 20 19.0789 20 17.9444V2.05556C20 0.921875 19.0789 0 17.9444 0ZM6.11111 15.5556H3.33333V7.22222H6.11111V15.5556ZM4.72222 6.11111C5.61979 6.11111 6.38889 5.34201 6.38889 4.44444C6.38889 3.54688 5.61979 2.77778 4.72222 2.77778C3.82465 2.77778 3.05556 3.54688 3.05556 4.44444C3.05556 5.34201 3.82465 6.11111 4.72222 6.11111ZM14.4444 15.5556H11.6667V11.6667C11.6667 10.8125 11.6528 9.6875 10.5556 9.6875C9.375 9.6875 9.16667 10.625 9.16667 11.5278V15.5556H6.38889V7.22222H9.02778V8.47222H9.08333C9.375 8.125 9.92188 7.6875 10.8333 7.6875C13.3333 7.6875 14.4444 9.375 14.4444 12.3611V15.5556Z" fill="currentColor"/>
+									</svg>
+									Yoan Milani
 								</a>
 							</div>
 						</div>
@@ -609,5 +783,92 @@
             content.style.display = 'block';
         });
     </script>
+	
+	
+	<footer style="
+		margin: 30px auto 20px auto; /* Marges : Haut, Droite, Bas, Gauche */
+		padding: 30px 20px; 
+		text-align: center; 
+		border: 1px solid #e1e7ef; 
+		background: #ffffff; 
+		
+		/* ARRONDIS SUR LES 4 COINS */
+		border-radius: 20px; 
+		
+		/* Ombre centrée pour l'effet flottant */
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+	">
+		
+		<div style="margin-bottom: 25px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+    
+			<a href="assets/CV_Yoan_Milani_Amadi.pdf" 
+			   download="CV_Yoan_Milani_Amadi.pdf" 
+			   class="cv-download-btn" 
+			   style="text-decoration: none; background: #002395; color: white; padding: 10px 20px; border-radius: 25px; font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 8px;"
+			   onclick="confirmDownload(event)">					
+			   📄 Télécharger CV
+			<div id="cvUpdateDate" style="font-size: 0.8rem; color: var(--muted); opacity: 0;"></div>
+			</a>
+			
+			<button onclick="navigator.share({title: 'Portfolio - Yoan Milani', url: 'https://energix-97441.duckdns.org'})"
+				class="cv-download-btn" 
+				style="cursor: pointer; border: 1.5px solid #002395 !important; background: #ffffff !important; color: #002395 !important; padding: 10px 20px; border-radius: 25px; font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 8px; text-decoration: none;">
+				👤 Partager le Portfolio
+			</button>
+
+			<button onclick="navigator.share({title: 'Simulateur PV - EnergiX', url: 'https://energix-pv-97441.duckdns.org'})"
+			   class="cv-download-btn" 
+			   style="cursor: pointer; border: none; background: #CF1020; color: white; padding: 10px 20px; border-radius: 25px; font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 8px;">
+			   ☀️ Partager EnergiX PV
+			</button>
+
+		</div>
+		
+		<div class="visitor-counter">
+			<div id="stats-badge">
+				<span class="status-dot"></span>
+				<span style="color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.7rem;">Live :</span>
+				<span id="visitor-count">Chargement...</span>
+			</div>
+		</div>
+
+<script data-goatcounter="https://energix-97441.goatcounter.com/count" 
+        async src="//gc.zgo.at/count.js"></script>
+		
+		<p class="titre-signature" style="margin-bottom: 25px; margin-top: 5px;">
+			Solutions durables & Innovation énergétique
+		</p>
+
+		<div style="text-align: center; font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; color: #000000;">
+			<p style="margin: 0; opacity: 0.8;">
+				© 2026 <span style="color: #002395; font-weight: 800;">Energi</span><span style="color: #CF1020; font-weight: 800;">X_97441</span>
+			</p>
+			
+			<div style="width: 80px; height: 3px; background: #F0C300; margin: 10px auto; border-radius: 10px;"></div>
+			
+			<p style="font-size: 0.7rem; color: #000000; line-height: 1.5; max-width: 400px; margin: 0 auto;">
+				Contenu libre de partage, autorisé pour tout usage professionnel.
+			</p>
+		</div>
+	</footer>
+	<script data-goatcounter="https://energix-97441.goatcounter.com/count"
+			async src="//gc.zgo.at/count.js"></script>
+			<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			// On attend un court instant pour laisser le temps au script principal de charger
+			setTimeout(() => {
+				fetch('https://energix-97441.goatcounter.com/counter/total.json')
+					.then(response => response.json())
+					.then(data => {
+						// Formate le nombre avec un espace pour les milliers (ex: 1 240)
+						const formattedCount = new Intl.NumberFormat('fr-FR').format(data.count);
+						document.getElementById('visitor-count').innerText = formattedCount + " vues";
+					})
+					.catch(err => {
+						document.getElementById('visitor-count').innerText = "Disponible";
+					});
+			}, 1000);
+		});
+	</script>
 </body>
 </html>
