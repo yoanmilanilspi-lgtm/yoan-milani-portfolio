@@ -476,6 +476,15 @@
     </style>
 </head>
     <body>
+	<a href="https://energix-pv-97441.duckdns.org" target="_blank" 
+	   style="position: fixed; top: 15px; right: 15px; z-index: 9999; text-decoration: none; padding: 10px;">
+		<img src="https://energix-97441.duckdns.org/images/EnergiX_logo.webp" 
+			 alt="Logo EnergiX" 
+			 width="160" 
+			 style="display: block; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.25)); transition: transform 0.3s ease;"
+			 onmouseover="this.style.transform='scale(1.08)'"
+			 onmouseout="this.style.transform='scale(1)'">
+	</a>
     <div class="page">
         <!-- 🅰️ CARTE DE VISITE -->
         <div class="card" data-section="carte">
@@ -500,6 +509,12 @@
 							   class="cv-download-btn" 
 							   style="font-size: 0.85rem; padding: 8px 16px; margin: 0;" 
 							   onclick="confirmDownload(event)">📄 Télécharger CV</a>
+							<a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Entretien+avec+Yoan+MILANI-AMADI&details=Discussion+autour+du+poste+d%27Ing%C3%A9nieur+Efficacit%C3%A9+%C3%89nerg%C3%A9tique.+Contact+:+0693027840.+Disponible+en+visioconf%C3%A9rence+ou+en+pr%C3%A9sentiel.&location=Visioconf%C3%A9rence+/+Pr%C3%A9sentiel+(La+R%C3%A9union)" 
+							   target="_blank" 
+							   class="cv-download-btn" 
+							   style="font-size: 0.85rem; margin: 0; padding: 8px 16px; margin: 0;">
+								📅 Planifier un entretien
+							</a>
 							<div id="cvUpdateDate" style="font-size: 0.8rem; color: var(--muted); opacity: 0;"></div>
 						</div>
 
@@ -543,17 +558,40 @@
                         </a>
                         
                         <div class="contact">
-                            <div>Sainte-Suzanne, 97441 La Réunion</div>
-                            <div>📅 Né le 14/02/2001</div>
-                            <div>📞 06 93 02 78 40</div>
-                            <div>📧 <a href="mailto:yoan.milani.lspi@gmail.com">yoan.milani.lspi@gmail.com</a></div>
-                            <a href="https://linkedin.com/in/yoan-milani" target="_blank" class="contact-icon" title="Profil LinkedIn">
-                            <svg viewBox="0 0 16 16" fill="none">
-                                <path d="M17.9444 0H2.05556C0.921875 0 0 0.921875 0 2.05556V17.9444C0 19.0789 0.921875 20 2.05556 20H17.9444C19.0789 20 20 19.0789 20 17.9444V2.05556C20 0.921875 19.0789 0 17.9444 0ZM6.11111 15.5556H3.33333V7.22222H6.11111V15.5556ZM4.72222 6.11111C5.61979 6.11111 6.38889 5.34201 6.38889 4.44444C6.38889 3.54688 5.61979 2.77778 4.72222 2.77778C3.82465 2.77778 3.05556 3.54688 3.05556 4.44444C3.05556 5.34201 3.82465 6.11111 4.72222 6.11111ZM14.4444 15.5556H11.6667V11.6667C11.6667 10.8125 11.6528 9.6875 10.5556 9.6875C9.375 9.6875 9.16667 10.625 9.16667 11.5278V15.5556H6.38889V7.22222H9.02778V8.47222H9.08333C9.375 8.125 9.92188 7.6875 10.8333 7.6875C13.3333 7.6875 14.4444 9.375 14.4444 12.3611V15.5556Z" fill="currentColor"/>
-                            </svg>
-                            Yoan Milani
+							<a href="https://www.google.com/maps/search/?api=1&query=Sainte-Suzanne,97441,La+Réunion" 
+							   target="_blank" class="contact-icon">
+								<img src="https://img.icons8.com/ios-filled/32/004a99/marker.png" width="18" alt="Lieu">
+								<span>Sainte-Suzanne, 97441 La Réunion</span>
 							</a>
-                        </div>
+
+							<div class="contact-icon" style="cursor: default;">
+								<a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Entretien+avec+Yoan+MILANI-AMADI&details=Discussion+autour+du+poste+d%27Ing%C3%A9nieur+Efficacit%C3%A9+%C3%89nerg%C3%A9tique.+Contact+:+0693027840.+Disponible+en+visioconf%C3%A9rence+ou+en+pr%C3%A9sentiel.&location=Visioconf%C3%A9rence+/+Pr%C3%A9sentiel+(La+R%C3%A9union)" 
+								   target="_blank" 
+								   class="contact-icon" 
+								   style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+									
+									<img src="https://img.icons8.com/ios-filled/32/004a99/calendar.png" width="18" alt="Calendrier">
+									
+									<span>Né le 14/02/2001</span>
+								</a>
+							</div>
+
+							<a href="tel:+262693027840" class="contact-icon">
+								<img src="https://img.icons8.com/ios-filled/32/004a99/phone.png" width="18" alt="Tel">
+								<span>06 93 02 78 40</span>
+							</a>
+
+							<a href="mailto:yoan.milani.lspi@gmail.com" class="contact-icon">
+								<img src="https://img.icons8.com/color/48/gmail-new.png" width="18" alt="Gmail">
+								<span>yoan.milani.lspi@gmail.com</span>
+							</a>
+
+							<a href="https://www.linkedin.com/in/yoan-milani-173b62335" 
+							   target="_blank" class="contact-icon">
+								<img src="https://img.icons8.com/color/48/linkedin.png" width="20" alt="LinkedIn">
+								<span>Yoan Milani</span>
+							</a>
+						</div>
                     </div>
                 </div>
             </div>
@@ -747,7 +785,7 @@
 								</a>
 
 
-								<a href="https://linkedin.com/in/yoan-milani" target="_blank" class="contact-btn linkedin-btn" title="Profil LinkedIn">
+								<a href="https://www.linkedin.com/in/yoan-milani-173b62335" target="_blank" class="contact-btn linkedin-btn" title="Profil LinkedIn">
 									<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path d="M17.9444 0H2.05556C0.921875 0 0 0.921875 0 2.05556V17.9444C0 19.0789 0.921875 20 2.05556 20H17.9444C19.0789 20 20 19.0789 20 17.9444V2.05556C20 0.921875 19.0789 0 17.9444 0ZM6.11111 15.5556H3.33333V7.22222H6.11111V15.5556ZM4.72222 6.11111C5.61979 6.11111 6.38889 5.34201 6.38889 4.44444C6.38889 3.54688 5.61979 2.77778 4.72222 2.77778C3.82465 2.77778 3.05556 3.54688 3.05556 4.44444C3.05556 5.34201 3.82465 6.11111 4.72222 6.11111ZM14.4444 15.5556H11.6667V11.6667C11.6667 10.8125 11.6528 9.6875 10.5556 9.6875C9.375 9.6875 9.16667 10.625 9.16667 11.5278V15.5556H6.38889V7.22222H9.02778V8.47222H9.08333C9.375 8.125 9.92188 7.6875 10.8333 7.6875C13.3333 7.6875 14.4444 9.375 14.4444 12.3611V15.5556Z" fill="currentColor"/>
 									</svg>
@@ -841,7 +879,7 @@
 
 		<div style="text-align: center; font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; color: #000000;">
 			<p style="margin: 0; opacity: 0.8;">
-				© 2026 <span style="color: #002395; font-weight: 800;">Energi</span><span style="color: #CF1020; font-weight: 800;">X_97441</span>
+				© 2026 <span style="color: #002395; font-weight: 800;">Energi</span><span style="color: #10b981; font-weight: 800;">X</span><span style="color: #002395; font-weight: 800;">_97441</span>
 			</p>
 			
 			<div style="width: 80px; height: 3px; background: #F0C300; margin: 10px auto; border-radius: 10px;"></div>
