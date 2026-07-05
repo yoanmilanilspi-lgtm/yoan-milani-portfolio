@@ -7,7 +7,7 @@
 * { margin: 0; padding: 0; }
 body {
 	display: block;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 400; line-height: 1.6; 
     background: linear-gradient(135deg, rgba(0, 63, 125, 0.9), rgba(0, 119, 200, 0.9)), 
                 url('https://energix-97441.duckdns.org/images/EnergiX_logo.webp');
@@ -132,9 +132,9 @@ body {
 }
 h1 { 
     margin: 0;
-	font-family: 'Montserrat', sans-serif;
+	font-family: arial;
     font-size: 1.5rem;
-	font-weight: 500;
+	font-weight: 400;
     letter-spacing: 0.01em;
     text-transform: uppercase;
     color: var(--bg1);
@@ -149,7 +149,7 @@ h2 {
     margin: 0;
 	font-family: 'Montserrat', sans-serif;
     font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--accent);
     text-transform: uppercase;
 }
@@ -452,7 +452,7 @@ a {
 }
 .section-title {
     position: relative;
-    font-family: 'Montserrat', sans-serif;
+    font-family: Arial;
     font-weight: 400;
     font-size: 0.85rem;
     margin: 20px 0 8px 0;
@@ -499,7 +499,7 @@ li strong{
 .small {
 	font-family: 'Montserrat', sans-serif;
     font-size: 0.75rem;
-	font-weight: 550;
+	font-weight: 400;
     color: var(--muted);
     line-height: 1.55;
 	color: rgba(0,0,0,0.7);
@@ -507,10 +507,10 @@ li strong{
 .small  strong{
 	font-family: 'Montserrat', sans-serif;
     font-size: 0.8rem;
-	font-weight: 550;
+	font-weight: 450;
 }
 .xp-title {
-    font-weight: 450;
+    font-weight: 400;
     font-size: 0.85rem;
     margin-bottom: 2px;
     line-height: 1.3;
